@@ -82,3 +82,11 @@ let resolveRoute = route => {
     throw new Error("The route is not defined");
   }
 };
+
+// The actual router, get the current URL and generate the corresponding template
+let router = evt => {
+  const url = window.location.hash.slice(1) || "/";
+  console.log(url);
+  const routeResolved = resolveRoute(url);
+  routeResolved();
+};
