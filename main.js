@@ -44,3 +44,15 @@ template("Home", () => {
   );
   return myDiv.appendChild(link1);
 });
+
+// Contact temolate
+template("Contact", () => {
+  document.title = "Contact";
+  let myDiv = document.getElementById(appDiv);
+  myDiv.innerHTML = "";
+  const link1 = createDiv(
+    "view1",
+    "<div><h1>Contact US </h1><a href='https://www.tab-erp.com/' target='_blank'>TAB page</a></div>"
+  );
+  return myDiv.appendChild(link1);
+});
