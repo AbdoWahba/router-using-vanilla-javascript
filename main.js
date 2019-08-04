@@ -56,3 +56,16 @@ template("Contact", () => {
   );
   return myDiv.appendChild(link1);
 });
+
+// About template
+
+template("About", () => {
+  document.title = "About";
+  let myDiv = document.getElementById(appDiv);
+  myDiv.innerHTML = "";
+  const link2 = createDiv(
+    "view2",
+    "<div><h1>About</h1><p>TAB is software company</p></div>"
+  );
+  return myDiv.appendChild(link2);
+});
