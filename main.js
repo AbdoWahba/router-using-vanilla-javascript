@@ -153,3 +153,6 @@ template("AddLink", () => {
 
   return myDiv.appendChild(link2);
 });
+
+// add link route
+route("/addlink", "AddLink");
