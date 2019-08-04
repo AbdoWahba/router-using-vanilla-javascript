@@ -94,3 +94,62 @@ let router = evt => {
 // For first load or when routes are changed in browser url box.
 window.addEventListener("load", router);
 window.addEventListener("hashchange", router);
+
+// adding links dynamically
+
+// add linl template
+template("AddLink", () => {
+  document.title = "AddLink";
+  let myDiv = document.getElementById(appDiv);
+  myDiv.innerHTML = "";
+  const link2 = createDiv(
+    "view2",
+    `<form id="formSub">
+      <fieldset>
+        <legend>Add link and page data</legend>
+        
+        <div class="form-group">
+          <label>Hash address</label>
+          <input
+            type="text"
+            id="hash"
+            class="form-control"
+            placeholder="Enter Hash"
+          />
+        </div>
+        
+        <div class="form-group">
+            <label>page title</label>
+            <input
+              type="text"
+              id="title"
+              class="form-control"
+              placeholder="Enter title"
+            />
+          </div>
+  
+          <div class="form-group">
+              <label>Header</label>
+              <input
+                type="text"
+                id="header"
+                class="form-control"
+                placeholder="Enter Header"
+              />
+            </div>
+  
+        <div class="form-group">
+          <label for="exampleTextarea">Body</label>
+          <textarea
+            class="form-control"
+            id="body"
+            rows="4"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </form>`
+  );
+
+  return myDiv.appendChild(link2);
+});
