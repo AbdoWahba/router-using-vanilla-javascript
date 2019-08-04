@@ -30,3 +30,17 @@ let createDiv = (id, xmlString) => {
   d.innerHTML = xmlString;
   return d.firstChild;
 };
+
+// Register the templates.
+
+// Home template
+template("Home", () => {
+  document.title = "Home";
+  let myDiv = document.getElementById(appDiv);
+  myDiv.innerHTML = "";
+  const link1 = createDiv(
+    "view1",
+    "<div><h1>Home page</h1><p>this is home page</p></div>"
+  );
+  return myDiv.appendChild(link1);
+});
