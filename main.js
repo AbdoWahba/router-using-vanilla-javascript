@@ -156,3 +156,31 @@ template("AddLink", () => {
 
 // add link route
 route("/addlink", "AddLink");
+
+// add new link function
+let newLink = function(hash, title, header, body) {
+  let myDiv = document.getElementById("list");
+
+  const link2 = createDiv(
+    "view2",
+    `<li class="nav-item">
+          <a class="nav-link" href="#/` +
+      hash +
+      `">` +
+      title +
+      `</a>
+        </li>`
+  );
+  myDiv.parentNode.insertBefore(link2, myDiv.nextSibling);
+  template(title, () => {
+    document.title = "Contact";
+    let myDiv = document.getElementById(appDiv);
+    myDiv.innerHTML = "";
+    const link1 = createDiv(
+      "view1",
+      "<div><h1>" + header + " </h1><p>" + body + "</p></div>"
+    );
+    return myDiv.appendChild(link1);
+  });
+  route("/" + hash, title);
+};
