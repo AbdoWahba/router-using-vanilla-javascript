@@ -58,7 +58,6 @@ template("Contact", () => {
 });
 
 // About template
-
 template("About", () => {
   document.title = "About";
   let myDiv = document.getElementById(appDiv);
@@ -69,3 +68,8 @@ template("About", () => {
   );
   return myDiv.appendChild(link2);
 });
+
+// Define the mappings route->template.
+route("/", "Home");
+route("/contact", "Contact");
+route("/about", "About");
