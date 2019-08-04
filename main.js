@@ -22,3 +22,11 @@ let route = (path, template) => {
     return;
   }
 };
+
+// Generate DOM tree from a string
+let createDiv = (id, xmlString) => {
+  let d = document.createElement("div");
+  d.id = id;
+  d.innerHTML = xmlString;
+  return d.firstChild;
+};
