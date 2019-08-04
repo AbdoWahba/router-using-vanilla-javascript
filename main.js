@@ -89,6 +89,19 @@ let router = evt => {
   console.log(url);
   const routeResolved = resolveRoute(url);
   routeResolved();
+  //   lestening to event (form submission)
+  if (url == "/addlink") {
+    document.getElementById("formSub").addEventListener("submit", e => {
+      e.preventDefault;
+      console.log(e);
+      newLink(
+        document.getElementById("hash").value,
+        document.getElementById("title").value,
+        document.getElementById("header").value,
+        document.getElementById("body").value
+      );
+    });
+  }
 };
 
 // For first load or when routes are changed in browser url box.
