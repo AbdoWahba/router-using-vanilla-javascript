@@ -73,3 +73,12 @@ template("About", () => {
 route("/", "Home");
 route("/contact", "Contact");
 route("/about", "About");
+
+// Give the correspondent route (template) or fail
+let resolveRoute = route => {
+  try {
+    return routes[route];
+  } catch (error) {
+    throw new Error("The route is not defined");
+  }
+};
