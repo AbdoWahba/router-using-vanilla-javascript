@@ -90,3 +90,7 @@ let router = evt => {
   const routeResolved = resolveRoute(url);
   routeResolved();
 };
+
+// For first load or when routes are changed in browser url box.
+window.addEventListener("load", router);
+window.addEventListener("hashchange", router);
