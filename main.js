@@ -105,7 +105,10 @@ let router = evt => {
 };
 
 // For first load or when routes are changed in browser url box.
-window.addEventListener("load", router);
+window.addEventListener("load", () => {
+  addPageTemp("./dataforms/bodyform.html", "BodyForm", "body");
+  router();
+});
 window.addEventListener("hashchange", router);
 
 // adding links dynamically
@@ -186,7 +189,7 @@ let newLink = function(hash, title, header, body) {
   );
   myDiv.parentNode.insertBefore(link2, myDiv.nextSibling);
   template(title, () => {
-    document.title = "Contact";
+    document.title = title;
     let myDiv = document.getElementById(appDiv);
     myDiv.innerHTML = "";
     const link1 = createDiv(

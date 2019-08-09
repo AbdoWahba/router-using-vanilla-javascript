@@ -1,5 +1,4 @@
-let callPage = (form_path, addfn) => {
-  debugger;
+let callPage = (form_path, headfn, bodyfn, title, hash) => {
   let xhr = new XMLHttpRequest();
 
   xhr.responseType = "document";
@@ -10,9 +9,13 @@ let callPage = (form_path, addfn) => {
     if (xhr.status == 200) {
       body = new XMLSerializer().serializeToString(xhr.response.body);
       headXML = xhr.response.head;
+
       var ret = "";
       ret = { body: body, headXML: headXML };
-      addfn(headXML);
+
+      headfn(headXML);
+      bodyfn(body);
+
       console.log(ret);
     }
   };
@@ -76,5 +79,35 @@ appendHead = headXML => {
     }
   }
 };
-debugger;
-callPage("./dataforms/bodyform.html", appendHead);
+
+appendBody = bodyTXT => {
+  document.getElementById(appDiv);
+  let myDiv = document.getElementById(appDiv);
+  myDiv.innerHTML = bodyTXT;
+};
+console.log("hello");
+
+addPageTemp = (path, title, hash) => {
+  let myDiv = document.getElementById("list");
+
+  const link2 = createDiv(
+    "view2",
+    `<li class="nav-item">
+          <a class="nav-link" href="#/` +
+      hash +
+      `">` +
+      title +
+      `</a>
+        </li>`
+  );
+  myDiv.parentNode.insertBefore(link2, myDiv.nextSibling);
+  template(title, () => {
+    document.title = title;
+    callPage(path, appendHead, appendBody, title, hash);
+  });
+  route("/" + hash, title);
+};
+
+// window.addEventListener("load", () => {
+//   addPageTemp("./dataforms/bodyform.html", "BodyForm", "body");
+// });
