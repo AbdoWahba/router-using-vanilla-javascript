@@ -1,3 +1,8 @@
+var appended = {
+  scripts: [],
+  styles: [],
+  name: window.location.hash.slice(1) || "/"
+};
 // Application div
 const appDiv = "app";
 
@@ -86,6 +91,34 @@ let resolveRoute = route => {
 // The actual router, get the current URL and generate the corresponding template
 let router = evt => {
   const url = window.location.hash.slice(1) || "/";
+  debugger;
+  if (appended.name !== url && url !== "/") {
+    if (appended.scripts.length != 0) {
+      var scripts = document.getElementsByTagName("script");
+      for (var i = 0; i < scripts.length; i++) {
+        for (var j = 0; j < appended.scripts.length; j++) {
+          if (scripts[i].src == appended.scripts[j].src) {
+            scripts[i].remove();
+          }
+        }
+      }
+    }
+    if (appended.styles.length != 0) {
+      var styles = document.getElementsByTagName("link");
+      for (var i = 0; i < styles.length; i++) {
+        for (var j = 0; j < appended.styles.length; j++) {
+          if (styles[i].href == appended.styles[j].href) {
+            styles[i].remove();
+          }
+        }
+      }
+    }
+    appended = {
+      scripts: [],
+      styles: [],
+      name: window.location.hash.slice(1) || "/"
+    };
+  }
   console.log(url);
   const routeResolved = resolveRoute(url);
   routeResolved();
@@ -107,6 +140,11 @@ let router = evt => {
 // For first load or when routes are changed in browser url box.
 window.addEventListener("load", () => {
   addPageTemp("./dataforms/bodyform.html", "BodyForm", "body");
+  var appended = {
+    scripts: [],
+    styles: [],
+    name: window.location.hash.slice(1) || "/"
+  };
   router();
 });
 window.addEventListener("hashchange", router);

@@ -1,5 +1,3 @@
-var appended = { scripts: [], styles: [], name: "" };
-
 let callPage = (form_path, headfn, bodyfn, title, hash) => {
   let xhr = new XMLHttpRequest();
 
@@ -23,7 +21,6 @@ let callPage = (form_path, headfn, bodyfn, title, hash) => {
 };
 
 appendHead = headXML => {
-  debugger;
   var ind = 0;
   var appended = { scripts: [], styles: [] };
   var newElements = headXML.getElementsByTagName("script");
@@ -53,7 +50,7 @@ appendHead = headXML => {
       ind++;
     }
   }
-  debugger;
+
   var ind = 0;
   var newElements = headXML.getElementsByTagName("link");
   var oldElements = document.getElementsByTagName("link");
